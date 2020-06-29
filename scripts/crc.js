@@ -69,7 +69,7 @@ function getAverageBy(arr, fun) {
     let value = arr.filter(fun).sort((a,b)=>{
             let ap = fun(a)
             let bp = fun(b)
-            return ap > bp ? 1 : ap < bp ? -1 : 0
+            return ap < bp ? 1 : ap > bp ? -1 : 0
         })
         .filter((x,i)=>i < 3)
         .reduce((p,c,_,a)=>p + (fun(c)/a.length), 0)
