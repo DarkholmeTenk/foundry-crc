@@ -1,0 +1,26 @@
+{
+	"name": "crc",
+	"title": "CRC - Challenge Rating Calculator",
+	"description": "A module that allows you to attempt to automatically calculate a custom monster's CR",
+	"version": "1.0.0",
+	"author": "shane_booth",
+	"esmodules": [
+        "scripts/crc.js"
+	],
+	"languages": [
+		{
+			"lang": "en",
+			"name": "English",
+			"path": "lang/en.json"
+		}
+	],
+	"socket": true,
+	"minimumCoreVersion": "0.6.2",
+	"compatibleCoreVersion": "0.6.2",
+	"system": "dnd5e",
+	"styles": [
+	],
+	"url": "https://github.com/DarkholmeTenk/foundry-crc",
+	"manifest": "https://raw.githubusercontent.com/DarkholmeTenk/foundry-crc/master/module.json",
+	"download": "https://github.com/DarkholmeTenk/foundry-crc/archive/master.zip"
+}
