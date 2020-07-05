@@ -135,23 +135,24 @@ function getOffensiveCR(items) {
 }
 
 Hooks.on('renderActorSheet', (app, html, data) => {
-    log("Opening actpr sheet")
     let actor = app.object
-    let title = game.i18n.localize('CRC.Button');
-    let openBtn = $(`<a class="crc-button" title="${title}"><i class="fas fa-calculator"></i></a>`);
-    openBtn.click(async ev => {
-        log("Opening for", app, data)
-        let defensiveIndex = getDefensiveCR(actor.data)
-        log("Defensive", defensiveIndex, crs[defensiveIndex])
-        let offensiveIndex = getOffensiveCR(actor.items)
-        log("Offensive", offensiveIndex, crs[offensiveIndex])
-        if(offensiveIndex && defensiveIndex) {
-            let index = Math.floor((defensiveIndex + offensiveIndex) / 2)
-            let cr = crs[index]
-            await actor.update({"data.details.cr": cr.data.cr})
-        }
-    });
-    html.closest('.app').find('.crc-button').remove();
-    let titleElement = html.closest('.app').find('.window-title');
-    openBtn.insertAfter(titleElement);
+    if(!actor.isToken && actor.owner) {
+        let title = game.i18n.localize('CRC.Button');
+        let openBtn = $(`<a class="crc-button" title="${title}"><i class="fas fa-calculator"></i></a>`);
+        openBtn.click(async ev => {
+            log("Opening for", app, data)
+            let defensiveIndex = getDefensiveCR(actor.data)
+            log("Defensive", defensiveIndex, crs[defensiveIndex])
+            let offensiveIndex = getOffensiveCR(actor.items)
+            log("Offensive", offensiveIndex, crs[offensiveIndex])
+            if(offensiveIndex && defensiveIndex) {
+                let index = Math.floor((defensiveIndex + offensiveIndex) / 2)
+                let cr = crs[index]
+                await actor.update({"data.details.cr": cr.data.cr})
+            }
+        });
+        html.closest('.app').find('.crc-button').remove();
+        let titleElement = html.closest('.app').find('.window-title');
+        openBtn.insertAfter(titleElement);
+    }
 });
