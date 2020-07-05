@@ -2,7 +2,7 @@
 	"name": "crc",
 	"title": "CRC - Challenge Rating Calculator",
 	"description": "A module that allows you to attempt to automatically calculate a custom monster's CR",
-	"version": "1.0.3",
+	"version": "1.0.4",
 	"author": "shane_booth",
 	"esmodules": [
         "scripts/crc.js"

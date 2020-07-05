@@ -136,7 +136,7 @@ function getOffensiveCR(items) {
 
 Hooks.on('renderActorSheet', (app, html, data) => {
     let actor = app.object
-    if(!actor.isToken && actor.owner) {
+    if(!actor.isToken && actor.owner && !actor.isPC) {
         let title = game.i18n.localize('CRC.Button');
         let openBtn = $(`<a class="crc-button" title="${title}"><i class="fas fa-calculator"></i></a>`);
         openBtn.click(async ev => {
